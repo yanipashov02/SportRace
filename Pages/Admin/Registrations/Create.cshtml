@@ -1,0 +1,165 @@
+﻿@page
+@model SportRace.Web.Pages.Admin.Registrations.CreateModel
+
+@{
+    ViewData["Title"] = "Нова регистрация";
+}
+
+<div class="container py-5">
+
+    <h1 class="display-6 fw-bold">Нова регистрация</h1>
+
+    <p class="text-muted">
+        Регистриране на участник за спортно събитие в SportRace.
+    </p>
+
+    <div class="card shadow-sm">
+        <div class="card-body">
+
+            <form method="post">
+
+                <div asp-validation-summary="ModelOnly"
+                     class="text-danger mb-3"></div>
+
+
+                <div class="mb-3">
+                    <label class="form-label">
+                        Участник
+                    </label>
+
+                    <select asp-for="Registration.ParticipantId"
+                            class="form-control">
+
+                        <option value="">
+                            -- Избери участник --
+                        </option>
+
+                        @foreach (var p in Model.Participants)
+                        {
+                            <option value="@p.Id">
+                                @p.FirstName @p.LastName
+                            </option>
+                        }
+
+                    </select>
+                </div>
+
+
+
+                <div class="mb-3">
+                    <label class="form-label">
+                        Състезание
+                    </label>
+
+                    <select asp-for="Registration.EventId"
+                            class="form-control">
+
+                        <option value="">
+                            -- Избери състезание --
+                        </option>
+
+                        @foreach (var e in Model.Events)
+                        {
+                            <option value="@e.Id">
+                                @e.Name
+                            </option>
+                        }
+
+                    </select>
+                </div>
+
+
+
+                <div class="mb-3">
+                    <label class="form-label">
+                        Дисциплина
+                    </label>
+
+                    <select asp-for="Registration.DisciplineId"
+                            class="form-control">
+
+                        <option value="">
+                            -- Избери дисциплина --
+                        </option>
+
+                        @foreach (var d in Model.Disciplines)
+                        {
+                            <option value="@d.Id">
+                                @d.Name
+                            </option>
+                        }
+
+                    </select>
+                </div>
+
+
+
+                <div class="mb-3">
+                    <label class="form-label">
+                        Категория
+                    </label>
+
+                    <select asp-for="Registration.CategoryId"
+                            class="form-control">
+
+                        <option value="">
+                            -- Избери категория --
+                        </option>
+
+                        @foreach (var c in Model.Categories)
+                        {
+                            <option value="@c.Id">
+                                @c.Name
+                            </option>
+                        }
+
+                    </select>
+                </div>
+
+
+
+                <div class="mb-3">
+                    <label class="form-label">
+                        Възрастова група
+                    </label>
+
+                    <select asp-for="Registration.AgeGroupId"
+                            class="form-control">
+
+                        <option value="">
+                            -- Избери възрастова група --
+                        </option>
+
+                        @foreach (var a in Model.AgeGroups)
+                        {
+                            <option value="@a.Id">
+                                @a.Name
+                            </option>
+                        }
+
+                    </select>
+                </div>
+
+
+
+                <button type="submit"
+                        class="btn btn-primary">
+                    Създай регистрация
+                </button>
+
+                <a href="/Admin/Registrations"
+                   class="btn btn-secondary">
+                    Отказ
+                </a>
+
+            </form>
+
+        </div>
+    </div>
+
+</div>
+
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

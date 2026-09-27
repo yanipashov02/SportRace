@@ -1,0 +1,56 @@
+﻿@page
+@model SportRace.Web.Pages.Events.DetailsModel
+
+<div class="container py-5">
+
+    @if (Model.Event == null)
+    {
+        <div class="alert alert-warning text-center">
+            Състезанието не е намерено.
+        </div>
+    }
+    else
+    {
+        <div class="mb-4">
+            <h1 class="display-5 fw-bold">@Model.Event.Name</h1>
+            <p class="lead">@Model.Event.Description</p>
+        </div>
+
+        <div class="card shadow-sm">
+            <div class="card-body">
+
+                <p>
+                    <strong>Място:</strong>
+                    @Model.Event.Location
+                </p>
+
+                <p>
+                    <strong>Дата:</strong>
+                    @Model.Event.EventDate.ToString("dd.MM.yyyy HH:mm")
+                </p>
+
+                <p>
+                    <strong>Краен срок за регистрация:</strong>
+                    @Model.Event.RegistrationDeadline.ToString("dd.MM.yyyy HH:mm")
+                </p>
+
+                @if (Model.Event.IsPublished)
+                {
+                    <span class="badge bg-success">Публикувано</span>
+                }
+                else
+                {
+                    <span class="badge bg-secondary">Непубликувано</span>
+                }
+
+            </div>
+        </div>
+
+        <div class="mt-4">
+            <a href="/Events" class="btn btn-secondary">
+                ← Назад към състезанията
+            </a>
+        </div>
+    }
+
+</div>

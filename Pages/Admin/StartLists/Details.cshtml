@@ -1,0 +1,4 @@
+@page "{id:int}"
+@model SportRace.Web.Pages.Admin.StartLists.DetailsModel
+@{ViewData["Title"]="Стартов списък";}
+<div class="container py-5"><h1>Стартов списък</h1><table class="table table-striped mt-4"><thead><tr><th>Стартов №</th><th>Участник</th><th>Дисциплина</th><th>Категория</th><th>Старт</th></tr></thead><tbody>@foreach(var e in Model.Entries){<tr><td><strong>@e.StartNumber</strong></td><td>@e.ParticipantName</td><td>@e.DisciplineName</td><td>@e.CategoryName</td><td>@e.ScheduledStartTime.ToLocalTime().ToString("dd.MM.yyyy HH:mm")</td></tr>}</tbody></table><a asp-page="Index" class="btn btn-secondary">Назад</a></div>

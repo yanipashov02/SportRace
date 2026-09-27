@@ -1,0 +1,133 @@
+﻿@page
+@model SportRace.Web.Pages.Admin.CreateEventModel
+
+<div class="container py-5">
+
+    <div class="mb-4">
+        <h1 class="display-6 fw-bold">Ново състезание</h1>
+        <p class="text-muted">
+            Създаване на ново спортно събитие в SportRace.
+        </p>
+    </div>
+
+    <div class="card shadow-sm">
+        <div class="card-body">
+
+            <form method="post">
+
+                <div asp-validation-summary="ModelOnly"
+                     class="alert alert-danger">
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Event.Name" class="form-label">
+                        Име на състезанието
+                    </label>
+
+                    <input asp-for="Event.Name"
+                           class="form-control"
+                           placeholder="Например: SportRace Sofia 2026" />
+
+                    <span asp-validation-for="Event.Name"
+                          class="text-danger">
+                    </span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Event.Description" class="form-label">
+                        Описание
+                    </label>
+
+                    <textarea asp-for="Event.Description"
+                              class="form-control"
+                              rows="4"
+                              placeholder="Кратко описание на състезанието...">
+                    </textarea>
+
+                    <span asp-validation-for="Event.Description"
+                          class="text-danger">
+                    </span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Event.Location" class="form-label">
+                        Място
+                    </label>
+
+                    <input asp-for="Event.Location"
+                           class="form-control"
+                           placeholder="Например: София" />
+
+                    <span asp-validation-for="Event.Location"
+                          class="text-danger">
+                    </span>
+                </div>
+
+                <div class="row">
+
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="Event.EventDate" class="form-label">
+                            Дата и час на състезанието
+                        </label>
+
+                        <input asp-for="Event.EventDate"
+                               type="datetime-local"
+                               class="form-control" />
+
+                        <span asp-validation-for="Event.EventDate"
+                              class="text-danger">
+                        </span>
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="Event.RegistrationDeadline"
+                               class="form-label">
+                            Краен срок за регистрация
+                        </label>
+
+                        <input asp-for="Event.RegistrationDeadline"
+                               type="datetime-local"
+                               class="form-control" />
+
+                        <span asp-validation-for="Event.RegistrationDeadline"
+                              class="text-danger">
+                        </span>
+                    </div>
+
+                </div>
+
+                <div class="form-check mb-4">
+                    <input asp-for="Event.IsPublished"
+                           class="form-check-input"
+                           type="checkbox" />
+
+                    <label asp-for="Event.IsPublished"
+                           class="form-check-label">
+                        Публикувай състезанието
+                    </label>
+                </div>
+
+                <div class="d-flex gap-2">
+
+                    <button type="submit"
+                            class="btn btn-primary">
+                        Създай състезание
+                    </button>
+
+                    <a href="/Admin/Events"
+                       class="btn btn-secondary">
+                        Отказ
+                    </a>
+
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
