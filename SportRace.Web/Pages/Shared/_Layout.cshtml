@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - SportRace</title>
+
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/SportRace.Web.styles.css" asp-append-version="true" />
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
+            <div class="container">
+
+                <a class="navbar-brand fw-bold" asp-page="/Index">
+                    SportRace
+                </a>
+
+                <button class="navbar-toggler"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#mainNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div id="mainNav" class="collapse navbar-collapse">
+
+                    <ul class="navbar-nav me-auto">
+
+                        <li class="nav-item">
+                            <a class="nav-link" asp-page="/Events/Index">
+                                Състезания
+                            </a>
+                        </li>
+
+                        <li class="nav-item dropdown">
+
+                            <a class="nav-link dropdown-toggle"
+                               href="#"
+                               data-bs-toggle="dropdown">
+                                Администрация
+                            </a>
+
+                            <ul class="dropdown-menu">
+
+                                <li>
+                                    <a class="dropdown-item" asp-page="/Admin/Events">
+                                        Събития
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="dropdown-item" asp-page="/Admin/Participants/Index">
+                                        Участници
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="dropdown-item" asp-page="/Admin/Registrations/Index">
+                                        Регистрации
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <hr class="dropdown-divider" />
+                                </li>
+
+                                <li>
+                                    <a class="dropdown-item" asp-page="/Admin/Disciplines/Index">
+                                        Дисциплини
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="dropdown-item" asp-page="/Admin/Categories/Index">
+                                        Категории
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="dropdown-item" asp-page="/Admin/AgeGroups/Index">
+                                        Възрастови групи
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <hr class="dropdown-divider" />
+                                </li>
+
+                                <li>
+                                    <a class="dropdown-item" asp-page="/Admin/StartLists/Index">
+                                        Стартови списъци
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="dropdown-item" asp-page="/Admin/Results/Index">
+                                        Резултати и класиране
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <hr class="dropdown-divider" />
+                                </li>
+
+                                <li>
+                                    <a class="dropdown-item" asp-page="/Admin/Statistics/Index">
+                                        Статистика и справки
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </li>
+
+                    </ul>
+
+                    <ul class="navbar-nav">
+
+                        @if (User.Identity?.IsAuthenticated == true)
+                        {
+                            <li class="nav-item">
+                                <span class="nav-link text-light">
+                                    @User.Identity.Name
+                                </span>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" asp-page="/Account/Logout">
+                                    Изход
+                                </a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" asp-page="/Account/Login">
+                                    Вход
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" asp-page="/Account/Register">
+                                    Регистрация
+                                </a>
+                            </li>
+                        }
+
+                    </ul>
+
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+        <main role="main" class="pb-5">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top py-3 text-muted">
+        <div class="container">
+            &copy; 2026 SportRace — система за управление на спортни събития
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,4 @@
+@page "{id:int}"
+@model SportRace.Web.Pages.Admin.Results.EditModel
+@{ViewData["Title"]="Редактиране на резултат";}
+<div class="container py-5"><h1>Редактиране на резултат</h1><form method="post" class="card card-body shadow-sm mt-4"><input type="hidden" asp-for="Result.Id"/><input type="hidden" asp-for="Result.RegistrationId"/><div class="mb-3"><label class="form-label">Време</label><input asp-for="Result.TotalTime" class="form-control"/></div><div class="mb-3"><label class="form-label">Наказателни секунди</label><input asp-for="Result.PenaltySeconds" type="number" min="0" class="form-control"/></div><div class="form-check mb-3"><input asp-for="Result.IsFinished" class="form-check-input"/><label class="form-check-label">Финиширал</label></div><button class="btn btn-primary">Запази</button> <a asp-page="Index" class="btn btn-secondary">Отказ</a></form></div>

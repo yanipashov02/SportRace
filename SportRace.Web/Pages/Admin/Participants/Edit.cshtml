@@ -1,0 +1,164 @@
+﻿@page
+@model SportRace.Web.Pages.Admin.Participants.EditModel
+
+@{
+    ViewData["Title"] = "Редактиране на участник";
+}
+
+<div class="container py-5">
+
+    <div class="mb-4">
+        <h1 class="display-6 fw-bold">Редактиране на участник</h1>
+        <p class="text-muted">
+            Промяна на данните на регистриран участник в SportRace.
+        </p>
+    </div>
+
+    <div class="card shadow-sm">
+        <div class="card-body">
+
+            <form method="post">
+
+                <div asp-validation-summary="ModelOnly"
+                     class="text-danger mb-3">
+                </div>
+
+                <input type="hidden"
+                       asp-for="Participant.Id" />
+
+                <div class="row">
+
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="Participant.FirstName"
+                               class="form-label">
+                            Име
+                        </label>
+
+                        <input asp-for="Participant.FirstName"
+                               class="form-control" />
+
+                        <span asp-validation-for="Participant.FirstName"
+                              class="text-danger">
+                        </span>
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="Participant.LastName"
+                               class="form-label">
+                            Фамилия
+                        </label>
+
+                        <input asp-for="Participant.LastName"
+                               class="form-control" />
+
+                        <span asp-validation-for="Participant.LastName"
+                              class="text-danger">
+                        </span>
+                    </div>
+
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Participant.Email"
+                           class="form-label">
+                        Email
+                    </label>
+
+                    <input asp-for="Participant.Email"
+                           type="email"
+                           class="form-control" />
+
+                    <span asp-validation-for="Participant.Email"
+                          class="text-danger">
+                    </span>
+                </div>
+
+                <div class="row">
+
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="Participant.DateOfBirth"
+                               class="form-label">
+                            Дата на раждане
+                        </label>
+
+                        <input asp-for="Participant.DateOfBirth"
+                               type="date"
+                               class="form-control" />
+
+                        <span asp-validation-for="Participant.DateOfBirth"
+                              class="text-danger">
+                        </span>
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="Participant.PhoneNumber"
+                               class="form-label">
+                            Телефон
+                        </label>
+
+                        <input asp-for="Participant.PhoneNumber"
+                               class="form-control" />
+
+                        <span asp-validation-for="Participant.PhoneNumber"
+                              class="text-danger">
+                        </span>
+                    </div>
+
+                </div>
+
+                <hr class="my-4" />
+
+                <h5 class="mb-3">Контакт при спешни случаи</h5>
+
+                <div class="mb-3">
+                    <label asp-for="Participant.EmergencyContactName"
+                           class="form-label">
+                        Име на контактното лице
+                    </label>
+
+                    <input asp-for="Participant.EmergencyContactName"
+                           class="form-control" />
+
+                    <span asp-validation-for="Participant.EmergencyContactName"
+                          class="text-danger">
+                    </span>
+                </div>
+
+                <div class="mb-4">
+                    <label asp-for="Participant.EmergencyContactPhone"
+                           class="form-label">
+                        Телефон на контактното лице
+                    </label>
+
+                    <input asp-for="Participant.EmergencyContactPhone"
+                           class="form-control" />
+
+                    <span asp-validation-for="Participant.EmergencyContactPhone"
+                          class="text-danger">
+                    </span>
+                </div>
+
+                <div class="d-flex gap-2">
+
+                    <button type="submit"
+                            class="btn btn-primary">
+                        Запази промените
+                    </button>
+
+                    <a href="/Admin/Participants"
+                       class="btn btn-secondary">
+                        Отказ
+                    </a>
+
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

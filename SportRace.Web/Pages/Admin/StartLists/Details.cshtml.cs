@@ -1,0 +1,3 @@
+using Microsoft.AspNetCore.Mvc.RazorPages; using System.Net.Http.Json;
+namespace SportRace.Web.Pages.Admin.StartLists;
+public class DetailsModel:PageModel {private readonly IHttpClientFactory _factory;public List<EntryVm> Entries{get;set;}=new();public DetailsModel(IHttpClientFactory factory)=>_factory=factory;public async Task OnGetAsync(int id)=>Entries=await _factory.CreateClient("SportRaceApi1").GetFromJsonAsync<List<EntryVm>>($"api/startlists/{id}/entries")??new();public class EntryVm{public int StartNumber{get;set;}public DateTime ScheduledStartTime{get;set;}public string ParticipantName{get;set;}="";public string DisciplineName{get;set;}="";public string CategoryName{get;set;}="";}}

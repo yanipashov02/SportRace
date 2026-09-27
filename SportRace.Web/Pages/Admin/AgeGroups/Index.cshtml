@@ -1,0 +1,8 @@
+@page
+@model SportRace.Web.Pages.Admin.AgeGroups.IndexModel
+@{ ViewData["Title"] = "Възрастови групи"; }
+<div class="container py-5"><div class="d-flex justify-content-between align-items-center mb-4"><div><h1 class="fw-bold">Възрастови групи</h1><p class="text-muted mb-0">Управление на възрастовите диапазони за състезанията.</p></div><a asp-page="Create" class="btn btn-primary">Нова група</a></div>
+@if(Model.Message!=null){<div class="alert alert-info">@Model.Message</div>}
+<div class="card shadow-sm"><div class="card-body"><table class="table table-hover align-middle"><thead><tr><th>ID</th><th>Име</th><th>Мин. възраст</th><th>Макс. възраст</th><th>Статус</th><th></th></tr></thead><tbody>
+@foreach(var a in Model.AgeGroups){<tr><td>@a.Id</td><td>@a.Name</td><td>@a.MinAge</td><td>@a.MaxAge</td><td><span class="badge bg-success">Активна</span></td><td class="text-end"><a asp-page="Edit" asp-route-id="@a.Id" class="btn btn-sm btn-warning">Редактирай</a> <form method="post" asp-page-handler="Delete" asp-route-id="@a.Id" class="d-inline" onsubmit="return confirm('Изтриване на групата?');"><button class="btn btn-sm btn-danger">Изтрий</button></form></td></tr>}
+</tbody></table></div></div></div>

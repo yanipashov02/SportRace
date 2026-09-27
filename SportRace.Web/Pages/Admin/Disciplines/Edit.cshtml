@@ -1,0 +1,93 @@
+﻿@page
+@model SportRace.Web.Pages.Admin.Disciplines.EditModel
+
+@{
+    ViewData["Title"] = "Редактиране на дисциплина";
+}
+
+<div class="container py-5">
+
+    <div class="mb-4">
+        <h1 class="display-6 fw-bold">Редактиране на дисциплина</h1>
+        <p class="text-muted">
+            Промяна на информацията за избраната спортна дисциплина.
+        </p>
+    </div>
+
+    <div class="card shadow-sm">
+        <div class="card-body">
+
+            <form method="post">
+
+                <input type="hidden" asp-for="Discipline.Id" />
+
+                <div asp-validation-summary="ModelOnly"
+                     class="text-danger mb-3">
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Discipline.Name"
+                           class="form-label">
+                        Име на дисциплината
+                    </label>
+
+                    <input asp-for="Discipline.Name"
+                           class="form-control" />
+
+                    <span asp-validation-for="Discipline.Name"
+                          class="text-danger">
+                    </span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Discipline.Description"
+                           class="form-label">
+                        Описание
+                    </label>
+
+                    <textarea asp-for="Discipline.Description"
+                              class="form-control"
+                              rows="4">
+                    </textarea>
+
+                    <span asp-validation-for="Discipline.Description"
+                          class="text-danger">
+                    </span>
+                </div>
+
+                <div class="form-check mb-4">
+
+                    <input asp-for="Discipline.IsActive"
+                           class="form-check-input" />
+
+                    <label asp-for="Discipline.IsActive"
+                           class="form-check-label">
+                        Активна дисциплина
+                    </label>
+
+                </div>
+
+                <div class="d-flex gap-2">
+
+                    <button type="submit"
+                            class="btn btn-primary">
+                        Запази промените
+                    </button>
+
+                    <a href="/Admin/Disciplines"
+                       class="btn btn-secondary">
+                        Отказ
+                    </a>
+
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
