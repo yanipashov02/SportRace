@@ -1,0 +1,7 @@
+<Solution>
+  <Project Path="SportRace.API/SportRace.API.csproj" Id="e3f09e92-3f33-4c05-9a6a-87e61fe42196" />
+  <Project Path="SportRace.Application/SportRace.Application.csproj" />
+  <Project Path="SportRace.Domain/SportRace.Domain.csproj" />
+  <Project Path="SportRace.Infrastructure/SportRace.Infrastructure.csproj" />
+  <Project Path="SportRace.Web/SportRace.Web.csproj" Id="06f20b04-82aa-41f2-a67f-a6c9f4744361" />
+</Solution>
